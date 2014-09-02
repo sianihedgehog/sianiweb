@@ -1,0 +1,27 @@
+$def with (room, session, player)
+<span>$room.message</span>
+<h1> $room.name </h1>
+
+<h1>Inventory</h1>
+<pre>
+$player.print_items()
+</pre>
+
+<h1>Room</h1>
+<pre>
+$room.description
+
+$room.show_paths(session)
+$room.show_things(session)
+</pre>
+
+$if room.name == "death" or room.name == "shoot_death" or room.name == "generic_death" or room.name == "bomb_death" or room.name == "the_end_loser" or room.name == "the_end_winner":
+	<p><a href="/">Play Again?</a></p>
+
+
+$else:
+	<p>
+	<form action="/game" method="POST">
+		- <input type="text" name="action"> <input type="SUBMIT">
+	</form>
+	</p>
